@@ -1,0 +1,27 @@
+# This is the file list input file template for the
+# ZX81 32k RAM, Flash, SD and Joy expansion card.
+# Based on this file a python script will create a binary file
+# that is needed to be written to the W25Qxx flash IC of the 
+# expansion card.
+# Each line of this file either should contain a reference to a .p file
+# or a reference to another list file in a different
+# directory with the extension of .fd
+# Each line may contain a display name after the .p of .fd file
+# (delimited with a semicolon)
+# Empty lines (empty or a line with white spaces only) are
+# not parsed. Comments start with # at the beginning of the line.
+# An .fd file contains references relative to its own path.
+# The filename or the display name is truncated to 20 characters.
+# The order of the files/lists are preserved in the generated .bin file.
+# The format of a file-line is the following: <filename>[;<display name>]
+# i.e. providing a display name is not mandatory. In that case
+# the file name - without .p - will be used in the ZX81 display
+# The program is not bulletproof, use it wisely!
+# Enjoy!
+#                                            Sandor Vass, 2023-Oct-04
+
+file1.p ; Pac Man 
+file2.p;Leo
+gg/files.fd ; Good Games
+bg/files.fd;Best Games
+# comment line

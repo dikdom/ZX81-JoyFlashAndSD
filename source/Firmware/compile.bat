@@ -1,0 +1,1 @@
+sjasm src\main.asm zx81flashjoy.bin 
