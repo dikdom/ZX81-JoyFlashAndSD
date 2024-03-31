@@ -1,0 +1,90 @@
+Name     ZX81-SEXP-D22 ;
+PartNo   00 ;
+Date     2023. 07. 05. ;
+Revision 01 ;
+Designer Engineer ;
+Company  Sanyi ;
+Assembly None ;
+Location  ;
+Device   g22v10lcc ;
+
+/* NC - 1, 8, 15, 22
+   GND - 14
+   VCC - 28
+*/
+
+/* *************** INPUT PINS *********************/
+PIN 2    = JOY_UP		; /* Flash Data Out bit */ 
+PIN 3    = FDOUT		; /* Joy right */ 
+PIN 4    = JOY_FIRE		; /* Joy left  */ 
+PIN 5    = JOY_DOWN		; /* Joy down  */ 
+PIN 6    = JOY_LEFT	; /* Joy fire  */ 
+PIN 7    = JOY_RIGHT		; /* Joy up    */ 
+
+PIN 9    = IS_KEMPSTON     ; /* 1-Kempston, 0-56780 */
+PIN 10    = !FLASH_RD	; /* Flash read/clk of LVC273 */ 
+PIN 11   = !JOY_SELECT	; /* Joy selected */ 
+PIN 12   = A12		;
+PIN 13   = A11 		;
+PIN 16   = SD_SWITCH		;
+
+/* *************** OUTPUT PINS *********************/
+PIN 17    = D0	; /* Data bit 0 */ 
+PIN 18    = D1	; /* Data bit 1 */ 
+PIN 19    = D2	; /* Data bit 2 */
+PIN 20    = D4	; /* Data bit 3 */
+PIN 21    = D3	; /* Data bit 4 */
+
+PINNODE 23 = OE_FLAG_D0;
+PINNODE 24 = OE_FLAG_D1;
+PINNODE 25 = OE_FLAG_D2;
+PINNODE 26 = OE_FLAG_D3;
+PINNODE 27 = OE_FLAG_D4;
+
+
+OE_FLAG_D0 = FLASH_RD #
+		(JOY_SELECT & IS_KEMPSTON) #
+		(JOY_SELECT & !IS_KEMPSTON & !A12 & !JOY_FIRE);
+
+OE_FLAG_D1 = FLASH_RD # 
+		(JOY_SELECT & IS_KEMPSTON);
+
+OE_FLAG_D2 = FLASH_RD #
+		(JOY_SELECT & IS_KEMPSTON) #
+		(JOY_SELECT & !IS_KEMPSTON & !A12 & !JOY_RIGHT);
+
+OE_FLAG_D3 = FLASH_RD #
+		(JOY_SELECT & IS_KEMPSTON) #
+		(JOY_SELECT & !IS_KEMPSTON & !A12 & !JOY_UP);
+
+
+OE_FLAG_D4 = FLASH_RD #
+		(JOY_SELECT & IS_KEMPSTON) #
+		(JOY_SELECT & !IS_KEMPSTON & !A12 & !JOY_DOWN) #
+		(JOY_SELECT & !IS_KEMPSTON & !A11 & !JOY_LEFT);
+
+/* OE_FLAG_REST = FLASH_RD & (JOY_SELECT & !IS_KEMPSTON) & (JOY_SELECT & IS_KEMPSTON & A12);
+
+OE_FLAG_D4 = FLASH_RD & (JOY_SELECT & !IS_KEMPSTON) & (JOY_SELECT & IS_KEMPSTON & A11); */
+/* Kemptson: 000FUDLR */
+
+D0.OE 	= OE_FLAG_D0;
+D0 	= (FLASH_RD & FDOUT) # 
+	  (IS_KEMPSTON & JOY_SELECT & !JOY_RIGHT);	
+
+D1.OE 	= OE_FLAG_D1;
+D1 	= (FLASH_RD & FDOUT) # 
+		(IS_KEMPSTON & JOY_SELECT & !JOY_LEFT);
+
+D2.OE 	= OE_FLAG_D2;
+D2 	= (FLASH_RD & FDOUT) # 
+		(IS_KEMPSTON & JOY_SELECT & !JOY_DOWN);
+
+D3.OE 	= OE_FLAG_D3;
+D3 	= (FLASH_RD & FDOUT) # 
+		(IS_KEMPSTON & JOY_SELECT & !JOY_UP);
+
+D4.OE 	= OE_FLAG_D4;
+D4 	= (FLASH_RD & SD_SWITCH) # 
+		(IS_KEMPSTON & JOY_SELECT & !JOY_FIRE);
+

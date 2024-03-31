@@ -1,0 +1,105 @@
+%SIGNAL
+PIN  13 =  A11 
+PIN  12 =  A12 
+PIN  17 =  D0 
+PIN  18 =  D1 
+PIN  19 =  D2 
+PIN  21 =  D3 
+PIN  20 =  D4 
+PIN   3 =  FDOUT 
+PIN  10 = !FLASH_RD 
+PIN   9 =  IS_KEMPSTON 
+PIN   5 =  JOY_DOWN 
+PIN   4 =  JOY_FIRE 
+PIN   6 =  JOY_LEFT 
+PIN   7 =  JOY_RIGHT 
+PIN  11 = !JOY_SELECT 
+PIN   2 =  JOY_UP 
+PIN  23 =  OE_FLAG_D0 
+PIN  24 =  OE_FLAG_D1 
+PIN  25 =  OE_FLAG_D2 
+PIN  26 =  OE_FLAG_D3 
+PIN  27 =  OE_FLAG_D4 
+PIN  16 =  SD_SWITCH 
+%END
+
+%FIELD
+%END
+
+%EQUATION
+D0 =>
+    IS_KEMPSTON & !JOY_RIGHT & !JOY_SELECT
+  # FDOUT & !FLASH_RD
+
+D0.oe  =>
+    OE_FLAG_D0
+
+D1 =>
+    IS_KEMPSTON & !JOY_LEFT & !JOY_SELECT
+  # FDOUT & !FLASH_RD
+
+D1.oe  =>
+    OE_FLAG_D1
+
+D2 =>
+    IS_KEMPSTON & !JOY_DOWN & !JOY_SELECT
+  # FDOUT & !FLASH_RD
+
+D2.oe  =>
+    OE_FLAG_D2
+
+D3 =>
+    IS_KEMPSTON & !JOY_SELECT & !JOY_UP
+  # FDOUT & !FLASH_RD
+
+D3.oe  =>
+    OE_FLAG_D3
+
+D4 =>
+    IS_KEMPSTON & !JOY_FIRE & !JOY_SELECT
+  # !FLASH_RD & SD_SWITCH
+
+D4.oe  =>
+    OE_FLAG_D4
+
+OE_FLAG_D0 =>
+    !A12 & !JOY_FIRE & !JOY_SELECT
+  # IS_KEMPSTON & !JOY_SELECT
+  # !FLASH_RD
+
+OE_FLAG_D1 =>
+    IS_KEMPSTON & !JOY_SELECT
+  # !FLASH_RD
+
+OE_FLAG_D2 =>
+    !A12 & !JOY_RIGHT & !JOY_SELECT
+  # IS_KEMPSTON & !JOY_SELECT
+  # !FLASH_RD
+
+OE_FLAG_D3 =>
+    !A12 & !JOY_SELECT & !JOY_UP
+  # IS_KEMPSTON & !JOY_SELECT
+  # !FLASH_RD
+
+OE_FLAG_D4 =>
+    !A11 & !JOY_LEFT & !JOY_SELECT
+  # !A12 & !JOY_DOWN & !JOY_SELECT
+  # IS_KEMPSTON & !JOY_SELECT
+  # !FLASH_RD
+
+OE_FLAG_D0.oe  =>
+    1 
+
+OE_FLAG_D1.oe  =>
+    1 
+
+OE_FLAG_D2.oe  =>
+    1 
+
+OE_FLAG_D3.oe  =>
+    1 
+
+OE_FLAG_D4.oe  =>
+    1 
+
+%END

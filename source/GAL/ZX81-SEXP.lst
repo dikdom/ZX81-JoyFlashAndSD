@@ -1,0 +1,94 @@
+LISTING FOR LOGIC DESCRIPTION FILE: ZX81-SEXP.pld                    Page 1
+
+CUPL(WM): Universal Compiler for Programmable Logic
+Version 5.0a Serial# 60008009
+Copyright (c) 1983, 1998 Logical Devices, Inc.
+Created Sun Feb 18 22:50:19 2024
+
+  1:Name     ZX81-SEXP ;
+  2:PartNo   00 ;
+  3:Date     2023. 06. 05. ;
+  4:Revision 01 ;
+  5:Designer Engineer ;
+  6:Company  Sanyi ;
+  7:Assembly None ;
+  8:Location  ;
+  9:Device   g20v8alcc ;
+ 10:
+ 11:/* *************** INPUT PINS *********************/
+ 12:PIN 2   =     M1;
+ 13:PIN 3   =     A15;
+ 14:PIN 4   =     A14;
+ 15:PIN 5   =       !RD;
+ 16:PIN 6   =       !IORQ;
+ 17:PIN 7   =       !MREQ;
+ 18:PIN 9   =       !WR;
+ 19:PIN 10  =       A5;
+ 20:PIN 11  =       !RFSH;
+ 21:PIN 12   =    A13;
+ 22:PIN 13   =    A0;
+ 23:PIN 16   =    !EROM_ENA;
+ 24:PIN 17   =    A6;
+ 25:PIN 18   =      A7;
+ 26:
+ 27:
+ 28:/* *************** OUTPUT PINS *********************/
+ 29:PIN  19   = eRAMSEL                   ; /*                                 */ 
+ 30:PIN  20   = eROMSEL                   ; /*                                 */ 
+ 31:PIN  21   = REG_CLK                   ; /*                                 */ 
+ 32:PIN  23    = eRAMA14;
+ 33:
+ 34:
+ 35:PIN  24   = JOY_SELECT                ; /*                                 */ 
+ 36:PIN  25   = FLASH_RD                  ; /*                                 */ 
+ 37:PIN  26   = iROMSEL                   ; /*                                 */ 
+ 38:PIN  27   =     KEMP_ENA;
+ 39:
+ 40:
+ 41:
+ 42:/* JOY_SELECT      = !IORQ & !RD & !A5 & !A6 & !A7; */
+ 43:/* JOY_SELECT    = !IORQ # !RD # A5; */
+ 44:/* JOY_SELECT    = !(KEMP_ENA & !IORQ & !RD & !A5) ; */
+ 45:JOY_SELECT    = !(KEMP_ENA & IORQ & RD & !A5) & !(!KEMP_ENA & IORQ & RD & !A0);
+ 46:
+ 47:FLASH_RD      = !IORQ # !RD # !A5 # A6 # A7 ; /* 3f */
+ 48:REG_CLK       = !IORQ # !WR # !A5 # A6 # A7 ; /* 3f */
+ 49:
+ 50:/*
+ 51:eROMSEL       = A14 # A15 # RFSH # !MREQ # !RD;
+ 52:iROMSEL       = A14 # A15 # !RFSH;
+ 53:*/
+
+LISTING FOR LOGIC DESCRIPTION FILE: ZX81-SEXP.pld                    Page 2
+
+CUPL(WM): Universal Compiler for Programmable Logic
+Version 5.0a Serial# 60008009
+Copyright (c) 1983, 1998 Logical Devices, Inc.
+Created Sun Feb 18 22:50:19 2024
+
+ 54:
+ 55:eROMSEL       = (!EROM_ENA # A14 # A15 # RFSH # !MREQ # !RD) & (EROM_ENA # !A13 # A14 # A15 # !MREQ # !RD);
+ 56:iROMSEL       = (!EROM_ENA # A14 # A15 # !RFSH) & (EROM_ENA # A13 # A14 # A15 # (!MREQ $ !RFSH));
+ 57:
+ 58:
+ 59:
+ 60:/* eRAMOE       = !RD & !RFSH; */
+ 61:
+ 62:
+ 63:eRAMA14         = (M1 & A15);
+ 64:/* eRAMA14 = 'b'0; */
+ 65:
+ 66:        /* LOW if (MREQ==L or RFSH ==L) and a14:a15 => (01 10 11)  */
+ 67:/* eRAMSEL       = !(A14 # A15) # (!MREQ & !RFSH); */
+ 68:
+ 69:eRAMSEL = !(A14 # A15) # (!MREQ & !RFSH & M1) # (!RD & !WR & !RFSH);
+ 70:/* eRAMSEL      = !(A14 # A15) # (!MREQ) # (!RD & !WR & !RFSH); */
+ 71:
+ 72:
+ 73:
+ 74:
+
+
+
+Jedec Fuse Checksum       (9a38)
+Jedec Transmit Checksum   (ad7a)

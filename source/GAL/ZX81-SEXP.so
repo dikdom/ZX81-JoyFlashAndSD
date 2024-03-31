@@ -1,0 +1,36 @@
+CSIM(WM): CUPL Simulation Program
+Version 5.0a Serial# 60008009
+Copyright (c) 1983, 1998 Logical Devices, Inc.
+CREATED Sun Feb 18 22:50:19 2024
+
+LISTING FOR SIMULATION FILE: ZX81-SEXP.si
+
+   1: Name     ZX81-SEXP;
+   2: PartNo   00;
+   3: Date     2023. 06. 05.;
+   4: Revision 01;
+   5: Designer Engineer;
+   6: Company  Sanyi;
+   7: Assembly None;
+   8: Location ;
+   9: Device   g20v8alcc;
+  10: 
+  11: 
+  12: ORDER: A0, A5, A6, A7, A13, A14, A15, !IORQ, !MREQ, !RFSH, !RD, !WR, M1, !EROM_ENA, KEMP_ENA, eRAMSEL, iROMSEL, JOY_SELECT, FLASH_RD, eROMSEL, REG_CLK; 
+  13: 
+  14: 
+
+==============================
+                       J      
+                   !   O      
+                   EK  YF     
+                   REei_LeR   
+                   OMRRSARE   
+             !!!   MPAOESOG   
+             IMR   __MMLHM_   
+          AAAORF!! EESSE_SC   
+      AAAA111RESRWMNNEECREL   
+      0567345QQHDR1AALLTDLK   
+==============================
+0001: 111110011111101HHHHHH
+[0014sa] insufficient test values

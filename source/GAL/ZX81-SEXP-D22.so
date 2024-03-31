@@ -1,0 +1,51 @@
+CSIM(WM): CUPL Simulation Program
+Version 5.0a Serial# 
+Copyright (c) 1983, 1998 Logical Devices, Inc.
+CREATED Sun Feb 18 22:55:02 2024
+
+LISTING FOR SIMULATION FILE: ZX81-SEXP-D22.si
+
+   1: Name     ZX81-SEXP-D22;
+   2: PartNo   00;
+   3: Date     2023. 07. 05.;
+   4: Revision 01;
+   5: Designer Engineer;
+   6: Company  Sanyi;
+   7: Assembly None;
+   8: Location ;
+   9: Device   g22v10lcc;
+  10: 
+  11: 
+  12: ORDER: !FLASH_RD, !JOY_SELECT, A11, A12, FDOUT, IS_KEMPSTON, JOY_DOWN, JOY_FIRE, JOY_LEFT, JOY_RIGHT, JOY_UP, SD_SWITCH, D0, D1, D2, D3, D4; 
+  13: 
+  14: 
+
+==========================
+       !   I              
+       J   S              
+      !O   _   J S        
+      FY   KJJJO D        
+      L_   EOOOY _        
+      AS   MYYY_JS        
+      SE  FP___ROW        
+      HL  DSDFLIYI        
+      _EAAOTOIEG_T        
+      RC11UOWRFHUCDDDDD   
+      DT12TNNETTPH01234   
+==========================
+0001: 110011111111ZZZZZ
+0002: 010011111110HHHHL
+0003: 010001111111LLLLH
+0004: 101111100101LHLHH
+0005: 100110110111ZZZZL
+0006: 100110111111ZZZZZ
+0007: 101010101111LZZZZ
+0008: 101010111111ZZZZZ
+0009: 101010111011ZZLZZ
+0010: 101010111111ZZZZZ
+0011: 101010111101ZZZLZ
+0012: 101010111111ZZZZZ
+0013: 101010011111ZZZZL
+0014: 101010111111ZZZZZ
+0015: 100010010111ZZZZL
+0016: 101010101001LZLLZ

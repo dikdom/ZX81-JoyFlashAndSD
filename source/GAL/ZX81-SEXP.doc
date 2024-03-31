@@ -1,0 +1,103 @@
+
+*******************************************************************************
+                                   ZX81-SEXP
+*******************************************************************************
+
+CUPL(WM)        5.0a Serial# 60008009
+Device          g20v8aslcc  Library DLIB-h-40-1
+Created         Sun Feb 18 22:50:19 2024
+Name            ZX81-SEXP 
+Partno          00 
+Revision        01 
+Date            2023. 06. 05. 
+Designer        Engineer 
+Company         Sanyi 
+Assembly        None 
+Location        
+
+===============================================================================
+                            Expanded Product Terms
+===============================================================================
+
+FLASH_RD =>
+    !RD
+  # !IORQ
+  # A7
+  # A6
+  # !A5
+
+JOY_SELECT =>
+    A0 & !KEMP_ENA
+  # A5 & KEMP_ENA
+  # !RD
+  # !IORQ
+
+REG_CLK =>
+    !WR
+  # !IORQ
+  # A7
+  # A6
+  # !A5
+
+eRAMA14 =>
+    A15 & M1
+
+eRAMSEL =>
+    !RD & !RFSH & !WR
+  # M1 & !MREQ & !RFSH
+  # !A14 & !A15
+
+eROMSEL =>
+    EROM_ENA & RFSH
+  # !A13 & !EROM_ENA
+  # !RD
+  # !MREQ
+  # A15
+  # A14
+
+iROMSEL =>
+    !EROM_ENA & !MREQ & RFSH
+  # MREQ & !RFSH
+  # EROM_ENA & !RFSH
+  # A13 & !EROM_ENA
+  # A15
+  # A14
+
+
+===============================================================================
+                                 Symbol Table
+===============================================================================
+
+Pin Variable                                    Pterms   Max     Min    
+Pol   Name              Ext     Pin     Type     Used   Pterms  Level   
+--- --------            ---     ---     ----    ------  ------  -----   
+
+    A0                          13       V        -       -       -     
+    A5                          10       V        -       -       -     
+    A6                          17       V        -       -       -     
+    A7                          18       V        -       -       -     
+    A13                         12       V        -       -       -     
+    A14                         4        V        -       -       -     
+    A15                         3        V        -       -       -     
+ !  EROM_ENA                    16       V        -       -       -     
+    FLASH_RD                    25       V        5       8       4     
+ !  IORQ                        6        V        -       -       -     
+    JOY_SELECT                  24       V        4       8       4     
+    KEMP_ENA                    27       V        -       -       -     
+    M1                          2        V        -       -       -     
+ !  MREQ                        7        V        -       -       -     
+ !  RD                          5        V        -       -       -     
+    REG_CLK                     21       V        5       8       4     
+ !  RFSH                        11       V        -       -       -     
+ !  WR                          9        V        -       -       -     
+    eRAMA14                     23       V        1       8       4     
+    eRAMSEL                     19       V        3       8       4     
+    eROMSEL                     20       V        6       8       4     
+    iROMSEL                     26       V        6       8       4     
+
+
+LEGEND    D : default variable         F : field      G : group
+          I : intermediate variable    N : node       M : extended node
+          U : undefined                V : variable   X : extended variable
+          T : function
+

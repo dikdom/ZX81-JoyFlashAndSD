@@ -1,0 +1,16 @@
+#WAVEFORM
+#H Name     ZX81-SEXP;
+#H PartNo   00;
+#H Date     2023. 06. 05.;
+#H Revision 01;
+#H Designer Engineer;
+#H Company  Sanyi;
+#H Assembly None;
+#H Location ;
+#H Device   g20v8alcc;
+#H 
+#H 
+#H ORDER: A0, A5, A6, A7, A13, A14, A15, !IORQ, !MREQ, !RFSH, !RD, !WR, M1, !EROM_ENA, KEMP_ENA, eRAMSEL, iROMSEL, JOY_SELECT, FLASH_RD, eROMSEL, REG_CLK; 
+#H 
+#H 
+#V 0001 111110011111101HHHHHH

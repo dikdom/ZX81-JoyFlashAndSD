@@ -1,0 +1,144 @@
+
+*******************************************************************************
+                                 ZX81-SEXP-D22
+*******************************************************************************
+
+CUPL(WM)        5.0a Serial# 60008009
+Device          g22v10lcc  Library DLIB-h-40-2
+Created         Sun Feb 18 22:53:40 2024
+Name            ZX81-SEXP-D22 
+Partno          00 
+Revision        01 
+Date            2023. 07. 05. 
+Designer        Engineer 
+Company         Sanyi 
+Assembly        None 
+Location        
+
+===============================================================================
+                            Expanded Product Terms
+===============================================================================
+
+D0 =>
+    IS_KEMPSTON & !JOY_RIGHT & JOY_SELECT
+  # FDOUT & FLASH_RD
+
+D0.oe  =>
+    OE_FLAG_D0
+
+D1 =>
+    IS_KEMPSTON & !JOY_LEFT & JOY_SELECT
+  # FDOUT & FLASH_RD
+
+D1.oe  =>
+    OE_FLAG_D1
+
+D2 =>
+    IS_KEMPSTON & !JOY_DOWN & JOY_SELECT
+  # FDOUT & FLASH_RD
+
+D2.oe  =>
+    OE_FLAG_D2
+
+D3 =>
+    IS_KEMPSTON & JOY_SELECT & !JOY_UP
+  # FDOUT & FLASH_RD
+
+D3.oe  =>
+    OE_FLAG_D3
+
+D4 =>
+    IS_KEMPSTON & !JOY_FIRE & JOY_SELECT
+  # FLASH_RD & SD_SWITCH
+
+D4.oe  =>
+    OE_FLAG_D4
+
+OE_FLAG_D0 =>
+    !A12 & !JOY_FIRE & JOY_SELECT
+  # IS_KEMPSTON & JOY_SELECT
+  # FLASH_RD
+
+OE_FLAG_D1 =>
+    IS_KEMPSTON & JOY_SELECT
+  # FLASH_RD
+
+OE_FLAG_D2 =>
+    !A12 & !JOY_RIGHT & JOY_SELECT
+  # IS_KEMPSTON & JOY_SELECT
+  # FLASH_RD
+
+OE_FLAG_D3 =>
+    !A12 & JOY_SELECT & !JOY_UP
+  # IS_KEMPSTON & JOY_SELECT
+  # FLASH_RD
+
+OE_FLAG_D4 =>
+    !A11 & !JOY_LEFT & JOY_SELECT
+  # !A12 & !JOY_DOWN & JOY_SELECT
+  # IS_KEMPSTON & JOY_SELECT
+  # FLASH_RD
+
+OE_FLAG_D0.oe  =>
+    1 
+
+OE_FLAG_D1.oe  =>
+    1 
+
+OE_FLAG_D2.oe  =>
+    1 
+
+OE_FLAG_D3.oe  =>
+    1 
+
+OE_FLAG_D4.oe  =>
+    1 
+
+
+===============================================================================
+                                 Symbol Table
+===============================================================================
+
+Pin Variable                                    Pterms   Max     Min    
+Pol   Name              Ext     Pin     Type     Used   Pterms  Level   
+--- --------            ---     ---     ----    ------  ------  -----   
+
+    A11                         13       V        -       -       -     
+    A12                         12       V        -       -       -     
+    D0                          17       V        2       8       4     
+    D0                  oe      17       X        1       1       1     
+    D1                          18       V        2       10      4     
+    D1                  oe      18       X        1       1       1     
+    D2                          19       V        2       12      4     
+    D2                  oe      19       X        1       1       1     
+    D3                          21       V        2       16      4     
+    D3                  oe      21       X        1       1       1     
+    D4                          20       V        2       14      4     
+    D4                  oe      20       X        1       1       1     
+    FDOUT                       3        V        -       -       -     
+ !  FLASH_RD                    10       V        -       -       -     
+    IS_KEMPSTON                 9        V        -       -       -     
+    JOY_DOWN                    5        V        -       -       -     
+    JOY_FIRE                    4        V        -       -       -     
+    JOY_LEFT                    6        V        -       -       -     
+    JOY_RIGHT                   7        V        -       -       -     
+ !  JOY_SELECT                  11       V        -       -       -     
+    JOY_UP                      2        V        -       -       -     
+    OE_FLAG_D0                  23       N        3       16      4     
+    OE_FLAG_D1                  24       N        2       14      4     
+    OE_FLAG_D2                  25       N        3       12      4     
+    OE_FLAG_D3                  26       N        3       10      4     
+    OE_FLAG_D4                  27       N        4       8       4     
+    SD_SWITCH                   16       V        -       -       -     
+    OE_FLAG_D0          oe      23       D        1       1       0     
+    OE_FLAG_D1          oe      24       D        1       1       0     
+    OE_FLAG_D2          oe      25       D        1       1       0     
+    OE_FLAG_D3          oe      26       D        1       1       0     
+    OE_FLAG_D4          oe      27       D        1       1       0     
+
+
+LEGEND    D : default variable         F : field      G : group
+          I : intermediate variable    N : node       M : extended node
+          U : undefined                V : variable   X : extended variable
+          T : function
+

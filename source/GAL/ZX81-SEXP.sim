@@ -1,0 +1,74 @@
+%SIGNAL
+PIN  13 =  A0 
+PIN  10 =  A5 
+PIN  17 =  A6 
+PIN  18 =  A7 
+PIN  12 =  A13 
+PIN   4 =  A14 
+PIN   3 =  A15 
+PIN  16 = !EROM_ENA 
+PIN  25 =  FLASH_RD 
+PIN   6 = !IORQ 
+PIN  24 =  JOY_SELECT 
+PIN  27 =  KEMP_ENA 
+PIN   2 =  M1 
+PIN   7 = !MREQ 
+PIN   5 = !RD 
+PIN  21 =  REG_CLK 
+PIN  11 = !RFSH 
+PIN   9 = !WR 
+PIN  23 =  eRAMA14 
+PIN  19 =  eRAMSEL 
+PIN  20 =  eROMSEL 
+PIN  26 =  iROMSEL 
+%END
+
+%FIELD
+%END
+
+%EQUATION
+FLASH_RD =>
+    RD
+  # IORQ
+  # A7
+  # A6
+  # !A5
+
+JOY_SELECT =>
+    A0 & !KEMP_ENA
+  # A5 & KEMP_ENA
+  # RD
+  # IORQ
+
+REG_CLK =>
+    WR
+  # IORQ
+  # A7
+  # A6
+  # !A5
+
+eRAMA14 =>
+    A15 & M1
+
+eRAMSEL =>
+    RD & RFSH & WR
+  # M1 & MREQ & RFSH
+  # !A14 & !A15
+
+eROMSEL =>
+    !EROM_ENA & !RFSH
+  # !A13 & EROM_ENA
+  # RD
+  # MREQ
+  # A15
+  # A14
+
+iROMSEL =>
+    EROM_ENA & MREQ & !RFSH
+  # !MREQ & RFSH
+  # !EROM_ENA & RFSH
+  # A13 & EROM_ENA
+  # A15
+  # A14
+
+%END
