@@ -4,3 +4,4 @@
 - leftGAL-20v8.jed: This .jed file must be burnt into the left GAL chip (marked as GAL-L on the PCB), into a GAL20v8 GAL chip (or equivalent ATF). This chip conducts mainly the external ram, rom, flash and joy interwork.
 - rightGAL-22v10.jed: This .jed file must be burnt into the right GAL chip (marked as GAL-R on the PCB), into a GAL22v10 GAL chip (or equivalent ATF). This chip manages the CURSOR keyboard press based on joy movement and Flash and SD read.
  
+UPDATE: in case of startup issues please check the leftGAL's additional binaries in the source/GAL directory!
