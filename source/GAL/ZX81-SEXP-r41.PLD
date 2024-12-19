@@ -1,0 +1,73 @@
+Name     ZX81-SEXP-r41 ;
+PartNo   00 ;
+Date     2023. 06. 05. ;
+Revision 01 ;
+Designer Engineer ;
+Company  Sanyi ;
+Assembly None ;
+Location  ;
+Device   g20v8alcc ;
+
+/* *************** INPUT PINS *********************/
+PIN 2   =     M1;
+PIN 3   =     A15;
+PIN 4   =     A14;
+PIN 5   =   	!RD;
+PIN 6   = 	!IORQ;
+PIN 7   = 	!MREQ;
+PIN 9   =   	!WR;
+PIN 10  =   	A5;
+PIN 11  = 	!RFSH;
+PIN 12   =    A13;
+PIN 13   =    A0;
+PIN 16   =    !EROM_ENA;
+PIN 17   =    A6;
+PIN 18   =   	A7;
+
+
+/* *************** OUTPUT PINS *********************/
+PIN  19   = eRAMSEL                   ; /*                                 */ 
+PIN  20   = eROMSEL                   ; /*                                 */ 
+PIN  21   = REG_CLK                   ; /*                                 */ 
+PIN  23    = eRAMA14;
+
+
+PIN  24   = JOY_SELECT                ; /*                                 */ 
+PIN  25   = FLASH_RD                  ; /*                                 */ 
+PIN  26   = iROMSEL                   ; /*                                 */ 
+PIN  27   =     KEMP_ENA;
+
+
+
+/* JOY_SELECT	   = !IORQ & !RD & !A5 & !A6 & !A7; */
+/* JOY_SELECT    = !IORQ # !RD # A5; */
+/* JOY_SELECT    = !(KEMP_ENA & !IORQ & !RD & !A5) ; */
+JOY_SELECT    = !(KEMP_ENA & IORQ & RD & !A5) & !(!KEMP_ENA & IORQ & RD & !A0);
+
+FLASH_RD      = !IORQ # !RD # !A5 # A6 # A7 ; /* 3f */
+REG_CLK       = !IORQ # !WR # !A5 # A6 # A7 ; /* 3f */
+
+
+
+eROMSEL       = A14 # A15 # RFSH # !MREQ # !RD;
+iROMSEL       = A14 # A15 # !RFSH # !MREQ;
+
+
+/*
+eROMSEL       = (!EROM_ENA # A14 # A15 # RFSH # !MREQ # !RD) & (EROM_ENA # !A13 # A14 # A15 # !MREQ # !RD);
+iROMSEL       = (!EROM_ENA # A14 # A15 # !RFSH) & (EROM_ENA # A13 # A14 # A15 # (!MREQ $ !RFSH));
+*/
+
+/* eRAMOE 	= !RD & !RFSH; */
+
+
+eRAMA14 	= (M1 & A15);
+/* eRAMA14 = 'b'0; */
+
+	/* LOW if (MREQ==L or RFSH ==L) and a14:a15 => (01 10 11)  */
+/* eRAMSEL       = !(A14 # A15) # (!MREQ & !RFSH); */
+
+eRAMSEL	= !(A14 # A15) # (!MREQ & !RFSH & M1) # (!RD & !WR & !RFSH);
+/* eRAMSEL	= !(A14 # A15) # (!MREQ) # (!RD & !WR & !RFSH); */
+
+
